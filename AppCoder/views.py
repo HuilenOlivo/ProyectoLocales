@@ -11,16 +11,16 @@ def local1 (request):
     return HttpResponse(muestralocal1)
 
 def Local (request):
-    return HttpResponse ('Vista de Locales')
+    return render(request, 'AppCoder/local.html')
 
 def Gerente (request):
-    return HttpResponse ('Vista de Gerentes')
+    return render(request, 'AppCoder/gerente.html')
 
 def Empleado (request):
-    return HttpResponse ('Vista de Empleados')
+    return render(request, 'AppCoder/empleado.html')
 
 def Mercaderia (request):
-    return HttpResponse ('Vista de Mercaderia')
+    return render(request, 'AppCoder/mercaderia.html')
 
 def Inicio (request):
-    return HttpResponse ('Inicio')
+    return render(request, 'AppCoder/inicio.html')
