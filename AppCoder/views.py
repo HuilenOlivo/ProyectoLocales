@@ -24,3 +24,13 @@ def Mercaderia (request):
 
 def Inicio (request):
     return render(request, 'AppCoder/inicio.html')
+
+def FormularioLocal(request):
+    if request.method=='POST':
+        nombre=request.POST['nombre']
+        sucursal=request.POST['sucursal']
+        local=Local(nombre=nombre, sucursal=sucursal)
+        local.save()
+        return render (request, 'AppCoder/inicio.html', {'mensaje': 'Local registrado correstamente'})
+    else:
+        return render (request, 'AppCoder/formulariolocal.html')
