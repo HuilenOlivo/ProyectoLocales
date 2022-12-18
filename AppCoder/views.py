@@ -1,6 +1,12 @@
 from django.shortcuts import render
 from .models import *
 from django.http import HttpResponse
+from AppCoder.forms import *
+
+from django.urls import reverse_lazy
+
+from django.views.generic import *
+
 
 # Create your views here.
 
@@ -26,11 +32,20 @@ def Inicio (request):
     return render(request, 'AppCoder/inicio.html')
 
 def FormularioLocal(request):
-    if request.method=='POST':
-        nombre=request.POST['nombre']
-        sucursal=request.POST['sucursal']
-        local=Local(nombre=nombre, sucursal=sucursal)
-        local.save()
-        return render (request, 'AppCoder/inicio.html', {'mensaje': 'Local registrado correstamente'})
+    if request.method=="POST":
+        form= formulariolocal(request.POST)
+        if form.is_valid():
+            informacion=form.cleaned_data
+            print(informacion)
+            nombre= informacion["nombre"]
+            sucursal= informacion["sucursal"]
+            local= Local(nombre=nombre, sucursal=sucursal)
+            local.save()
+            return render(request, "AppCoder/inicio.html" ,{"mensaje": "Curso guardado correctamente"})
+        else:
+            return render(request, "AppCoder/formulariolocal.html" ,{"form": form, "mensaje": "Informacion no valida"})
+        
     else:
-        return render (request, 'AppCoder/formulariolocal.html')
+
+        formulario= formulariolocal()
+        return render (request, "AppCoder/formulariolocal.html", {"form": formulario})

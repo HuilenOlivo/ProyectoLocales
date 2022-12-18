@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Local (models.Model):
-    nombre= models.CharField(max_length=80)
+    usuario= models.CharField(max_length=80)
     sucursal= models.IntegerField()
 
     def __str__(self):

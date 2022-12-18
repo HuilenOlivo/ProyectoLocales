@@ -7,12 +7,22 @@
 {% endblock %}
 
 {% block contenido_que_cambia %}
+
+<h2> {{ mensaje }} </h2>
+
 <h2>Completar registro del local:</h2>
 
 <form action="{% url 'formulariolocal' %}" method="POST"> {% csrf_token %}
-    <p>Nombre: <input type="text" name="nombre"> </p>
+    <p>Nombre: <input type="text" name="usuario"> </p>
     <p>Sucursal: <input type="number" name="sucursal"> </p>
-    <a class="btn btn-dark btn-xl"><input type="submit" value="Registrar local"></a>
+    <input type="submit" value="Registrar local">
+
+    <table>
+
+        {{ from.as_table}}
+
+    </table>
+    
 
 
 </form>
