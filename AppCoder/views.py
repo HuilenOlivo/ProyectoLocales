@@ -114,3 +114,16 @@ def FormularioMercaderia(request):
     else:
         formulariomercaderia1= formulariogerente()
         return render (request, "AppCoder/formulariomercaderia.html", {"form": formulariomercaderia})
+
+def buscarsucursal(request):
+    return render (request, "AppCoder/buscarlocal.html")
+    
+def buscar (request):
+
+    sucursal=request.GET['sucursal']
+    if sucursal!="":
+        local=Local.objects.filter (sucursal=sucursal)
+
+        return render(request, "AppCoder/resultadosdebusqueda.html", {'local': local})
+    else:
+        return render (request, 'AppCoder/buscarsucurcal.html', {'mensaje': 'ingrese una sucuarsal para buscar'})

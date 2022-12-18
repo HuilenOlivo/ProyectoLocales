@@ -1,0 +1,22 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-5">Busqueda de Locales</h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+<h3>{{ mensaje }}</h3>
+
+<form action="{% url 'buscar' %}" method="GET"> 
+
+    <input type="number" name="sucursal" id="sucursal" placeholder="Inserte Sucursal">
+
+    <input type="submit" value="buscar sucursal">
+
+
+</form>
+
+{% endblock %}

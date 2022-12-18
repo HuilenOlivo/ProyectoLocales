@@ -15,4 +15,6 @@ urlpatterns=[
     path('formulariogerente/', FormularioGerente, name='formulariogerente'),
     path('formularioempleado/', FormularioEmpleado, name='formularioempleado'),
     path('formulariomercaderia/', FormularioMercaderia, name='formulariomercaderia'),
+    path("buscarsucursal/", buscarsucursal, name="buscarsucursal"),
+    path("buscar/", buscar, name="buscar"),
     ]
