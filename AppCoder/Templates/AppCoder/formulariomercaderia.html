@@ -1,0 +1,32 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-1">Formulario de Mercadería</h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+<h2> {{ mensaje }} </h2>
+
+<h2>Completar registro de Mrcadería:</h2>
+
+<form action="{% url 'formulariomercaderia' %}" method="POST"> {% csrf_token %}
+    <p>Nombre: <input type="text" name="nombre"> </p>
+    <p>Marca: <input type="text" name="marca"> </p>
+    <p>Fecha Ingreso: <input type="date" name="fechaingreso"> </p>
+    <p>Cantidad: <input type="number" name="cantidad"> </p>
+     
+    <input type="submit" value="Registrar local">
+
+    <table>
+
+        {{ from.as_table}}
+
+    </table>
+    
+
+
+</form>
+{% endblock %}

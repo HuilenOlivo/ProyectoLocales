@@ -49,3 +49,68 @@ def FormularioLocal(request):
 
         formulario= formulariolocal()
         return render (request, "AppCoder/formulariolocal.html", {"form": formulario})
+
+def FormularioGerente(request):
+    if request.method=="POST":
+        form= formulariogerente(request.POST)
+        
+        if form.is_valid():
+            informacion=form.cleaned_data
+            nombre= informacion["nombre"]
+            apellido= informacion["apellido"]
+            email= informacion["email"]
+            telefono= telefono ["telefono"]
+            formulariogerente1= Gerente(nombre=nombre, apellido=apellido, email=email, telefono=telefono)
+            formulariogerente1.save()
+           
+            return render(request, "AppCoder/gerente.html" ,{"Gerente":formulariogerente1, "mensaje": "Gerente guardado correctamente"})
+        else:
+            return render(request, "AppCoder/formulariogerente.html" ,{"form": form, "mensaje": "Informacion no valida"})
+        
+    else:
+        formulariogerente1= formulariogerente()
+        return render (request, "AppCoder/ProfeFormulario.html", {"form": formulariogerente})
+
+
+def FormularioEmpleado(request):
+    if request.method=="POST":
+        form= formularioempleado(request.POST)
+        
+        if form.is_valid():
+            informacion=form.cleaned_data
+            nombre= informacion["nombre"]
+            apellido= informacion["apellido"]
+            email= informacion["email"]
+            telefono= telefono ["telefono"]
+            formularioempleado1= Empleado(nombre=nombre, apellido=apellido, email=email, telefono=telefono)
+            formularioempleado1.save()
+           
+            return render(request, "AppCoder/empleado.html" ,{"Empleado":formularioempleado1, "mensaje": "Empleado guardado correctamente"})
+        else:
+            return render(request, "AppCoder/formularioempleado.html" ,{"form": form, "mensaje": "Informacion no valida"})
+        
+    else:
+        formularioempleado1= formulariogerente()
+        return render (request, "AppCoder/formularioempleado.html", {"form": formularioempleado})
+
+
+def FormularioMercaderia(request):
+    if request.method=="POST":
+        form= formulariomercaderia(request.POST)
+        
+        if form.is_valid():
+            informacion=form.cleaned_data
+            nombre= informacion["nombre"]
+            marca= informacion["marca"]
+            fechaingreso= informacion["fechaingreso"]
+            cantidad= informacion ["cantidad"]
+            formulariomercaderia1= Mercaderia(nombre=nombre, marca=marca, fechaingreso=fechaingreso, cantidad=cantidad)
+            formulariomercaderia1.save()
+            mercaderia=Mercaderia.objects.all()
+            return render(request, "AppCoder/mercaderia.html" ,{"Empleado":mercaderia, "mensaje": "Informacion de Mercadería guardado correctamente"})
+        else:
+            return render(request, "AppCoder/formulariomercaderia.html" ,{"form": form, "mensaje": "Informacion no valida"})
+        
+    else:
+        formulariomercaderia1= formulariogerente()
+        return render (request, "AppCoder/formulariomercaderia.html", {"form": formulariomercaderia})

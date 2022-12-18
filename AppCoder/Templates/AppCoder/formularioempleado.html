@@ -1,0 +1,32 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-1">Formulario de Empleado</h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+<h2> {{ mensaje }} </h2>
+
+<h2>Completar registro de Empleados:</h2>
+
+<form action="{% url 'formularioempleado' %}" method="POST"> {% csrf_token %}
+    <p>Nombre: <input type="text" name="nombre"> </p>
+    <p>Apellido: <input type="text" name="apellido"> </p>
+    <p>Email: <input type="email" name="email"> </p>
+    <p>Telefono: <input type="number" name="telefono"> </p>
+     
+    <input type="submit" value="Registrar local">
+
+    <table>
+
+        {{ from.as_table}}
+
+    </table>
+    
+
+
+</form>
+{% endblock %}
